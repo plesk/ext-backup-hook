@@ -24,6 +24,6 @@ class Modules_BackupHook_Backup_Domain extends pm_Hook_Backup_Domain
     public function restore(pm_Domain $domain, $idMapping, $pleskVersion, $extVersion, $config, $contentDir)
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '(' . $domain->getDisplayName() . ')');
-        $this->_restore('domain/' . $domain->getName() . '/');
+        $this->_restore('domain/' . $domain->getName() . '/', $config, $contentDir);
     }
 }
