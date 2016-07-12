@@ -18,6 +18,21 @@ class Modules_BackupHook_CustomButtons extends pm_Hook_CustomButtons
                     return true;
                 }
             ],
+            [
+                'place' => self::PLACE_CUSTOMER_HOME,
+                'title' => pm_Locale::lmsg('backupDataButton'),
+                'link' => pm_Context::getActionUrl('client', 'customer'),
+            ],
+            [
+                'place' => self::PLACE_RESELLER_HOME,
+                'title' => pm_Locale::lmsg('backupDataButton'),
+                'link' => pm_Context::getActionUrl('client', 'reseller'),
+            ],
+            [
+                'place' => self::PLACE_ADMIN_HOME,
+                'title' => pm_Locale::lmsg('backupDataButton'),
+                'link' => pm_Context::getActionUrl('client', 'admin'),
+            ],
         ];
     }
 }

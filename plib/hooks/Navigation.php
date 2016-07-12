@@ -10,6 +10,18 @@ class Modules_BackupHook_Navigation extends pm_Hook_Navigation
                 'controller' => 'domain',
                 'action' => 'index',
             ],
+            [
+                'controller' => 'client',
+                'action' => 'customer',
+            ],
+            [
+                'controller' => 'client',
+                'action' => 'reseller',
+            ],
+            [
+                'controller' => 'client',
+                'action' => 'admin',
+            ],
         ];
     }
 }

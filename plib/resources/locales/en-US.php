@@ -19,6 +19,17 @@ $messages = [
                 'title' => 'Backup Data',
             ],
         ],
+        'client' => [
+            'customer' => [
+                'title' => 'Backup Data',
+            ],
+            'reseller' => [
+                'title' => 'Backup Data',
+            ],
+            'admin' => [
+                'title' => 'Backup Data',
+            ],
+        ],
     ],
 ];
 
