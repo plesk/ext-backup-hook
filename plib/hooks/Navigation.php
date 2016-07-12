@@ -9,6 +9,16 @@ class Modules_BackupHook_Navigation extends pm_Hook_Navigation
             [
                 'controller' => 'index',
                 'action' => 'overview',
+                'pages' => [
+                    [
+                        'controller' => 'index',
+                        'action' => 'settings',
+                    ],
+                    [
+                        'controller' => 'index',
+                        'action' => 'backup-data',
+                    ],
+                ],
             ],
             [
                 'controller' => 'client',

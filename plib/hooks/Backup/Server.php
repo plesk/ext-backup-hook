@@ -26,4 +26,9 @@ class Modules_BackupHook_Backup_Server extends pm_Hook_Backup_Server
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '()');
         $this->_restore('server/', $config, $contentDir);
     }
+
+    public function getExcludedSettings()
+    {
+        return ['exclude'];
+    }
 }

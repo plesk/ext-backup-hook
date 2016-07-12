@@ -24,6 +24,11 @@ class IndexController extends pm_Controller_Action
 
         $this->view->smallTools = [
             [
+                'title' => pm_Locale::lmsg('controllers.index.overview.settingsButton'),
+                'class' => 'sb-settings',
+                'link' => pm_Context::getActionUrl('index', 'settings'),
+            ],
+            [
                 'title' => pm_Locale::lmsg('backupDataButton'),
                 'class' => 'sb-backup',
                 'link' => pm_Context::getActionUrl('index', 'backup-data'),
@@ -34,6 +39,17 @@ class IndexController extends pm_Controller_Action
                 'link' => 'javascript:Jsw.redirectPost("' . pm_Context::getActionUrl('index', 'clear') . '");',
             ],
         ];
+    }
+
+    public function settingsAction()
+    {
+        $context = [
+            'returnUrl' => pm_Context::getActionUrl('index', 'overview'),
+        ];
+
+        $this->_helper->form(new Modules_BackupHook_SettingsForm(['context' => $context]), [
+            'returnUrl' => $context['returnUrl'],
+        ]);
     }
 
     public function backupDataAction()
