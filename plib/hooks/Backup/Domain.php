@@ -12,7 +12,7 @@ class Modules_BackupHook_Backup_Domain extends pm_Hook_Backup_Domain
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '(' . $domain->getDisplayName() . ')');
 
-        $path = 'site/' . $domain->getName() . '/';
+        $path = 'domain/' . $domain->getName() . '/';
         if (!file_exists(pm_Context::getVarDir() . $path)) {
             return parent::backup($domain);
         }
@@ -32,7 +32,7 @@ class Modules_BackupHook_Backup_Domain extends pm_Hook_Backup_Domain
     public function restore(pm_Domain $domain, $idMapping, $pleskVersion, $extVersion, $config, $contentDir)
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '(' . $domain->getDisplayName() . ')');
-        $path = pm_Context::getVarDir() . 'site/' . $domain->getName() . '/';
+        $path = pm_Context::getVarDir() . 'domain/' . $domain->getName() . '/';
         if (!file_exists($path)) {
             @mkdir($path);
         }

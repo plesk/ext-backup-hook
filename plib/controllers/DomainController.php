@@ -8,7 +8,7 @@ class DomainController extends pm_Controller_Action
         $domain = $this->_getDomain();
 
         $context = [
-            'path' => pm_Context::getVarDir() . 'site/' . $domain->getName() . '/',
+            'path' => pm_Context::getVarDir() . 'domain/' . $domain->getName() . '/',
             'returnUrl' => '/smb/web/view',
         ];
 

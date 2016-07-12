@@ -7,12 +7,12 @@ class Modules_BackupHook_Navigation extends pm_Hook_Navigation
     {
         return [
             [
-                'controller' => 'domain',
-                'action' => 'index',
+                'controller' => 'index',
+                'action' => 'overview',
             ],
             [
                 'controller' => 'client',
-                'action' => 'customer',
+                'action' => 'admin',
             ],
             [
                 'controller' => 'client',
@@ -20,7 +20,11 @@ class Modules_BackupHook_Navigation extends pm_Hook_Navigation
             ],
             [
                 'controller' => 'client',
-                'action' => 'admin',
+                'action' => 'customer',
+            ],
+            [
+                'controller' => 'domain',
+                'action' => 'index',
             ],
         ];
     }

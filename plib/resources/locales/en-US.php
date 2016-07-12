@@ -3,6 +3,7 @@
 
 $messages = [
     'backupDataButton' => 'Backup Data',
+    'bytes' => '%%value%% B',
 
     'components' => [
         'forms' => [
@@ -14,19 +15,28 @@ $messages = [
     ],
 
     'controllers' => [
-        'domain' => [
-            'index' => [
-                'title' => 'Backup Data',
+        'index' => [
+            'overview' => [
+                'title' => 'Backup Hook Example',
+                'backupDataSize' => 'Backup data size:',
+                'backupDataServer' => 'Server',
+                'backupDataClient' => 'Clients',
+                'backupDataDomain' => 'Domains',
             ],
         ],
         'client' => [
-            'customer' => [
+            'admin' => [
                 'title' => 'Backup Data',
             ],
             'reseller' => [
                 'title' => 'Backup Data',
             ],
-            'admin' => [
+            'customer' => [
+                'title' => 'Backup Data',
+            ],
+        ],
+        'domain' => [
+            'index' => [
                 'title' => 'Backup Data',
             ],
         ],

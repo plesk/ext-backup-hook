@@ -1,0 +1,16 @@
+<?php
+// Copyright 1999-2016. Parallels IP Holdings GmbH. All Rights Reserved.
+?>
+<p><?= $this->lmsg('controllers.index.overview.backupDataSize') ?></p>
+<div class="form-row">
+    <div class="field-name"><?= $this->lmsg('controllers.index.overview.backupDataServer') ?></div>
+    <div class="field-value"><?= $this->lmsg('bytes', ['value' => $this->size['server']]) ?></div>
+</div>
+<div class="form-row">
+    <div class="field-name"><?= $this->lmsg('controllers.index.overview.backupDataClient') ?></div>
+    <div class="field-value"><?= $this->lmsg('bytes', ['value' => $this->size['client']]) ?></div>
+</div>
+<div class="form-row">
+    <div class="field-name"><?= $this->lmsg('controllers.index.overview.backupDataDomain') ?></div>
+    <div class="field-value"><?= $this->lmsg('bytes', ['value' => $this->size['domain']]) ?></div>
+</div>
