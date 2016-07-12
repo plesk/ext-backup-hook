@@ -28,11 +28,6 @@ class Modules_BackupHook_CustomButtons extends pm_Hook_CustomButtons
                 'title' => pm_Locale::lmsg('backupDataButton'),
                 'link' => pm_Context::getActionUrl('client', 'reseller'),
             ],
-            [
-                'place' => self::PLACE_ADMIN_HOME,
-                'title' => pm_Locale::lmsg('backupDataButton'),
-                'link' => pm_Context::getActionUrl('client', 'admin'),
-            ],
         ];
     }
 }

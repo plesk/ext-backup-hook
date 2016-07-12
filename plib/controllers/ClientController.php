@@ -26,9 +26,4 @@ class ClientController extends pm_Controller_Action
     {
         $this->forward('index');
     }
-
-    public function adminAction()
-    {
-        $this->forward('index');
-    }
 }

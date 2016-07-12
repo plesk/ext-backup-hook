@@ -21,6 +21,46 @@ class IndexController extends pm_Controller_Action
         foreach (['server', 'client', 'domain'] as $type) {
             $this->view->size[$type] = $this->_calculateSize(pm_Context::getVarDir() . $type);
         }
+
+        $this->view->smallTools = [
+            [
+                'title' => pm_Locale::lmsg('backupDataButton'),
+                'class' => 'sb-backup',
+                'link' => pm_Context::getActionUrl('index', 'backup-data'),
+            ],
+            [
+                'title' => $this->lmsg('controllers.index.overview.clearButton'),
+                'class' => 'sb-delete',
+                'link' => 'javascript:Jsw.redirectPost("' . pm_Context::getActionUrl('index', 'clear') . '");',
+            ],
+        ];
+    }
+
+    public function backupDataAction()
+    {
+        $context = [
+            'path' => pm_Context::getVarDir() . 'server/',
+            'returnUrl' => pm_Context::getActionUrl('index', 'overview'),
+        ];
+
+        $this->_helper->form(new Modules_BackupHook_DataForm(['context' => $context]), [
+            'returnUrl' => $context['returnUrl'],
+        ]);
+    }
+
+    public function clearAction()
+    {
+        if (!$this->_request->isPost()) {
+            throw new pm_Exception('Permission denied');
+        }
+
+        $fm = new pm_ServerFileManager();
+        foreach (['server', 'client', 'domain'] as $type) {
+            $fm->removeDirectory(pm_Context::getVarDir() . $type);
+        }
+
+        $this->_status->addMessage('info', $this->lmsg('controllers.index.clear.success'));
+        $this->_redirect(pm_Context::getActionUrl('index', 'overview'), ['prependBase' => false]);
     }
 
     private function _calculateSize($path)

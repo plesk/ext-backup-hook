@@ -22,12 +22,14 @@ $messages = [
                 'backupDataServer' => 'Server',
                 'backupDataClient' => 'Clients',
                 'backupDataDomain' => 'Domains',
+
+                'clearButton' => 'Remove all data',
+            ],
+            'clear' => [
+                'success' => 'All backup data was removed.',
             ],
         ],
         'client' => [
-            'admin' => [
-                'title' => 'Backup Data',
-            ],
             'reseller' => [
                 'title' => 'Backup Data',
             ],

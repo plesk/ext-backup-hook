@@ -3,6 +3,8 @@
 
 class Modules_BackupHook_Backup_Server extends pm_Hook_Backup_Server
 {
+    use Modules_BackupHook_BackupTrait;
+
     public function postBackup()
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '()');
@@ -11,7 +13,7 @@ class Modules_BackupHook_Backup_Server extends pm_Hook_Backup_Server
     public function backup()
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '()');
-        return parent::backup();
+        return $this->_backup('server/');
     }
 
     public function postRestore()
@@ -22,5 +24,6 @@ class Modules_BackupHook_Backup_Server extends pm_Hook_Backup_Server
     public function restore($pleskVersion, $extVersion, $config, $contentDir)
     {
         pm_Log::debug(__CLASS__ . '::' . __METHOD__ . '()');
+        $this->_restore('server/', $config, $contentDir);
     }
 }
