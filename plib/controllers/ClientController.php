@@ -8,7 +8,7 @@ class ClientController extends pm_Controller_Action
         $client = pm_Session::getClient();
 
         $context = [
-            'path' => pm_Context::getVarDir() . 'client/' . $client->getProperty('login') . '/',
+            'path' => pm_Context::getVarDir() . 'client/' . $client->getProperty('login'),
             'returnUrl' => '/',
         ];
 

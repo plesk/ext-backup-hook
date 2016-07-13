@@ -5,23 +5,26 @@ trait Modules_BackupHook_BackupTrait
 {
     private function _backup($path)
     {
-        if (!file_exists(pm_Context::getVarDir() . $path)) {
+        $fm = new pm_ServerFileManager();
+        if (!$fm->fileExists(pm_Context::getVarDir() . $path)) {
             return [''];
         }
 
         return [
-            file_get_contents($path . 'data1'),
+            $fm->fileGetContents(pm_Context::getVarDir() . $path . '/data1'),
             [$path],
-            [$path . 'data1']
+            [$path . '/data1']
         ];
     }
 
     private function _restore($path, $config, $contentDir)
     {
+        $fm = new pm_ServerFileManager();
         $path = pm_Context::getVarDir() . $path;
-        if (!file_exists($path)) {
-            @mkdir($path);
+        if (!$fm->fileExists($path)) {
+            $fm->mkdir($path, '0755', true);
         }
-        @file_put_contents($path . 'data1', $config);
+        $fm->filePutContents($path . '/data1', $config);
+        $fm->moveFile($contentDir . '/data2', $path);
     }
 }

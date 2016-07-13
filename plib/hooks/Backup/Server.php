@@ -7,12 +7,12 @@ class Modules_BackupHook_Backup_Server extends pm_Hook_Backup_Server
 
     public function backup()
     {
-        return $this->_backup('server/');
+        return $this->_backup('server');
     }
 
     public function restore($pleskVersion, $extVersion, $config, $contentDir)
     {
-        $this->_restore('server/', $config, $contentDir);
+        $this->_restore('server', $config, $contentDir);
     }
 
     public function getExcludedSettings()

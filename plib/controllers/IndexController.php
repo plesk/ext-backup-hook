@@ -55,7 +55,7 @@ class IndexController extends pm_Controller_Action
     public function backupDataAction()
     {
         $context = [
-            'path' => pm_Context::getVarDir() . 'server/',
+            'path' => pm_Context::getVarDir() . 'server',
             'returnUrl' => pm_Context::getActionUrl('index', 'overview'),
         ];
 
