@@ -25,6 +25,8 @@ trait Modules_BackupHook_BackupTrait
             $fm->mkdir($path, '0755', true);
         }
         $fm->filePutContents($path . '/data1', $config);
-        $fm->moveFile($contentDir . '/data2', $path);
+        if ($contentDir && $fm->fileExists($contentDir . '/data2')) {
+            $fm->moveFile($contentDir . '/data2', $path);
+        }
     }
 }
