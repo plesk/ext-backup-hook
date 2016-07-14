@@ -11,18 +11,16 @@ class Modules_BackupHook_DataForm extends pm_Form_Simple
     {
         parent::init();
 
-        $fm = new pm_ServerFileManager();
-
         $this->addElement('textarea', 'data1', [
             'label' => $this->lmsg('components.forms.data.data1'),
             'rows' => 8,
-            'value' => $fm->fileExists($this->_path . '/data1') ? $fm->fileGetContents($this->_path . '/data1') : '',
+            'value' => file_exists($this->_path . '/data1') ? file_get_contents($this->_path . '/data1') : '',
         ]);
 
         $this->addElement('textarea', 'data2', [
             'label' => $this->lmsg('components.forms.data.data2'),
             'rows' => 8,
-            'value' => $fm->fileExists($this->_path . '/data2') ? $fm->fileGetContents($this->_path . '/data2') : '',
+            'value' => file_exists($this->_path . '/data2') ? file_get_contents($this->_path . '/data2') : '',
         ]);
 
         $this->addControlButtons([
@@ -35,11 +33,10 @@ class Modules_BackupHook_DataForm extends pm_Form_Simple
     {
         parent::process();
 
-        $fm = new pm_ServerFileManager();
-        if (!$fm->fileExists($this->_path)) {
-            $fm->mkdir($this->_path, '0755', true);
+        if (!file_exists($this->_path)) {
+            mkdir($this->_path, 0755, true);
         }
-        $fm->filePutContents($this->_path . '/data1', $this->getValue('data1'));
-        $fm->filePutContents($this->_path . '/data2', $this->getValue('data2'));
+        file_put_contents($this->_path . '/data1', $this->getValue('data1'));
+        file_put_contents($this->_path . '/data2', $this->getValue('data2'));
     }
 }
