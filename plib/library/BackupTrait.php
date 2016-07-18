@@ -23,8 +23,26 @@ trait Modules_BackupHook_BackupTrait
             mkdir($path, 0755, true);
         }
         file_put_contents($path . '/data1', $config);
-        if ($contentDir && file_exists($contentDir . '/data2')) {
-            copy($contentDir . '/data2', $path . 'data2');
+        $this->_copy($contentDir, pm_Context::getVarDir());
+    }
+
+    private function _copy($source, $dest) {
+        if (!$source || !file_exists($source)) {
+            return;
+        }
+
+        if (is_dir($source)) {
+            if (!file_exists($dest)) {
+                mkdir($dest);
+            }
+            foreach (scandir($source) as $item) {
+                if ($item === '.' || $item === '..') {
+                    continue;
+                }
+                $this->_copy($source . '/' . $item, $dest . '/' . $item);
+            }
+        } else {
+            copy($source, $dest);
         }
     }
 }
