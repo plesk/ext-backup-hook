@@ -4,8 +4,9 @@
     <id>backup-hook</id>
     <name>Backup Hook Example</name>
     <description>Demonstrates how to back up custom data and files related to your extension.</description>
+    <category>example</category>
     <version>1.0</version>
-    <release>0</release>
+    <release>1</release>
     <vendor>Plesk</vendor>
     <plesk_min_version>17.0.14</plesk_min_version>
 </module>
