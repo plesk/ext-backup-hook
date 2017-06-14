@@ -32,6 +32,15 @@ class Modules_BackupHook_Navigation extends pm_Hook_Navigation
                 'controller' => 'domain',
                 'action' => 'index',
             ],
+            [
+                'controller' => 'domain',
+                'action' => 'selective',
+            ],
         ];
+    }
+
+    public function process()
+    {
+        parent::process();
     }
 }

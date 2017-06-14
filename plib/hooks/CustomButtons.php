@@ -5,7 +5,7 @@ class Modules_BackupHook_CustomButtons extends pm_Hook_CustomButtons
 {
     public function getButtons()
     {
-        return [
+        $buttons = [
             [
                 'place' => self::PLACE_DOMAIN_PROPERTIES,
                 'title' => pm_Locale::lmsg('backupDataButton'),
@@ -29,5 +29,24 @@ class Modules_BackupHook_CustomButtons extends pm_Hook_CustomButtons
                 'link' => pm_Context::getActionUrl('client', 'reseller'),
             ],
         ];
+
+        if (version_compare(pm_ProductInfo::getVersion(), "17.8.2", ">=")) {
+            $buttons = array_merge($buttons, [
+                [
+                    'place' => [self::PLACE_DOMAIN],
+                    'title' => pm_Locale::lmsg('selectiveBackupCreateButton'),
+                    'link' => pm_Context::getActionUrl('domain', 'selective-create'),
+                    'contextParams' => true,
+                ],
+                [
+                    'place' => [self::PLACE_DOMAIN],
+                    'title' => pm_Locale::lmsg('selectiveBackupListButton'),
+                    'link' => pm_Context::getActionUrl('domain', 'selective-list'),
+                    'contextParams' => true,
+                ]
+
+            ]);
+        }
+        return $buttons;
     }
 }
