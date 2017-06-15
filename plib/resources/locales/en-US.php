@@ -3,6 +3,9 @@
 
 $messages = [
     'backupDataButton' => 'Backup Data',
+    'selectiveBackupCreateButton' => 'Create Backup',
+    'selectiveBackupListButton' => 'List Backups',
+
     'bytes' => '%%value%% B',
 
     'components' => [
@@ -18,6 +21,12 @@ $messages = [
             'data' => [
                 'data1' => 'Data 1',
                 'data2' => 'Data 2',
+            ],
+            'selective' => [
+                'marker' => 'Backup Marker',
+                'description' => 'Backup description',
+                'files' => 'Files to backup',
+                'databases' => 'Databases to backup',
             ],
         ],
     ],
@@ -56,6 +65,9 @@ $messages = [
             'index' => [
                 'title' => 'Backup Data',
             ],
+            'selective' => [
+                'title' => 'Selective Backup',
+            ]
         ],
     ],
 ];
