@@ -15,12 +15,22 @@ class Modules_BackupHook_Backup_Selective implements pm_Hook_Backup_Selective
 
     public function getDatabasesForBackup($context)
     {
-        return $this->_getContextItem($context, 'files');
+        return $this->_getContextItem($context, 'databases');
     }
 
     public function getFilesForBackup($context)
     {
-        return $this->_getContextItem($context, 'databases');
+        $item = $this->_getContextItem($context, 'files');
+
+        if ('' === $item) {
+            return [];
+        }
+
+        if ('.' === $item) {
+            return [''];
+        }
+
+        return explode("\n", $item);
     }
 
     public function getConfigForBackup($context)
@@ -36,8 +46,9 @@ class Modules_BackupHook_Backup_Selective implements pm_Hook_Backup_Selective
             throw new Exception('Unable to get date for context ' . $context);
         }
         if (!array_key_exists($name, $contextData)) {
-            throw new Exception('Unable to get ' . $name. 'date for context ' . $context);
+            throw new Exception('Unable to get ' . $name . 'date for context ' . $context);
         }
+
         return $contextData[$name];
     }
 }
